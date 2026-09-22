@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --background: #f6f2eb; --foreground: #161411; }
+html { scroll-behavior: smooth; }
+body { color: var(--foreground); background: var(--background); }
+::selection { background: #e8d5c0; }
+input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible {
+  outline: 2px solid #8a5a32;
+  outline-offset: 2px;
+}

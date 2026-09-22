@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id           String          @id @default(cuid())
+  title        String
+  slug         String          @unique
+  description  String
+  price        Int
+  location     String
+  address      String
+  propertyType String
+  listingType  String
+  bedrooms     Int             @default(0)
+  bathrooms    Int             @default(0)
+  squareFeet   Int             @default(0)
+  amenities    String[]
+  features     String[]
+  featured     Boolean         @default(false)
+  status       String          @default("Available")
+  agentName    String          @default("PropertyHub")
+  agentPhone   String          @default("+234 809 441 2200")
+  agentEmail   String          @default("hello@propertyhub.ng")
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  images       PropertyImage[]
+  inquiries    Inquiry[]
+
+  @@index([location])
+  @@index([propertyType])
+  @@index([listingType])
+  @@index([featured])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  url        String
+  alt        String
+  isPrimary  Boolean  @default(false)
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+model Inquiry {
+  id         String    @id @default(cuid())
+  fullName   String
+  email      String
+  phone      String
+  message    String
+  status     String    @default("new")
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  createdAt  DateTime  @default(now())
+}
