@@ -1,20 +1,25 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About",
-  description: "PropertyHub is a Lagos real estate practice with a short list and long notes.",
-};
-
+import { Reveal } from "@/components/reveal";
+export const metadata = { title: "About" };
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-2xl px-5 py-20 md:px-8">
-      <p className="text-xs uppercase tracking-[0.2em] text-mute">The practice</p>
-      <h1 className="mt-3 font-serif text-5xl">About PropertyHub</h1>
-      <div className="mt-10 space-y-5 text-base leading-relaxed text-ink/90">
-        <p>PropertyHub started as a small desk on Victoria Island for people who were tired of listings that said nothing useful. We still work that way.</p>
-        <p>The public site is a short catalogue: houses and apartments we have walked through, land we have stood on, and commercial bays we would let a relative take.</p>
-        <p>If you are buying, we help you read the title and the street. If you are renting, we tell you how the generator actually behaves.</p>
-        <p>Office hours are Monday to Friday, nine to five. Viewings are by appointment.</p>
+    <div className="mx-auto max-w-3xl px-5 pb-24 pt-28 md:px-8">
+      <Reveal dir="up">
+        <p className="text-xs uppercase tracking-[0.24em] text-gold">About</p>
+        <h1 className="mt-4 font-serif text-5xl">Who we are</h1>
+      </Reveal>
+      <Reveal dir="left" className="mt-8">
+        <p className="leading-relaxed text-mist">PropertyHub is a Lagos practice. We started by walking streets in Lekki and Ikoyi and writing down which houses still felt like homes after ten years. That notebook became the desk.</p>
+      </Reveal>
+      <Reveal dir="right" className="mt-4">
+        <p className="leading-relaxed text-mist">Today we place residences, lettings, and three developments. We do not run a feed of every listing in the city.</p>
+      </Reveal>
+      <div className="mt-16 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
+        {[["10+", "Years experience"],["200+", "Properties"],["5", "Prime locations"]].map(([n,l],i) => (
+          <Reveal key={l} dir={i===1?"up":i===0?"left":"right"}>
+            <p className="font-serif text-4xl text-gold">{n}</p>
+            <p className="mt-2 text-sm text-mist">{l}</p>
+          </Reveal>
+        ))}
       </div>
     </div>
   );
