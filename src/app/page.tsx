@@ -1,94 +1,134 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroSearch } from "@/components/hero-search";
+import { Hero } from "@/components/hero";
+import { Reveal } from "@/components/reveal";
 import { PropertyCard } from "@/components/property-card";
-import { getFeatured } from "@/lib/properties";
+import { developments, locations, properties, team, testimonials } from "@/lib/data";
 
-const places = [
-  { name: "Lekki", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" },
-  { name: "Ikoyi", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" },
-  { name: "Victoria Island", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80" },
-  { name: "Ikeja", image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=900&q=80" },
-  { name: "Ajah", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80" },
-];
-
-export default async function HomePage() {
-  const featured = await getFeatured();
-
+export default function HomePage() {
+  const featured = properties.filter((p) => p.featured).slice(0, 4);
   return (
     <>
-      <section className="relative min-h-[88vh]">
-        <Image
-          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80"
-          alt="A Lagos residence at dusk"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-ink/45" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-site flex-col justify-end px-5 pb-12 pt-32 md:px-8">
-          <p className="text-xs uppercase tracking-[0.25em] text-paper/80">Lagos · Sales & rentals</p>
-          <h1 className="mt-4 max-w-2xl font-serif text-5xl leading-[1.05] text-paper md:text-7xl">
-            Find a place that feels like home.
-          </h1>
-          <p className="mt-5 max-w-lg text-base text-paper/85">
-            Houses, apartments, and measured investments across Lekki, Ikoyi, Victoria Island, and the rest of the city.
-          </p>
-          <div className="mt-8">
-            <HeroSearch />
-          </div>
+      <Hero />
+      <section className="mx-auto max-w-6xl px-5 py-24 md:px-8">
+        <div className="grid gap-12 md:grid-cols-2">
+          <Reveal dir="left">
+            <p className="text-xs uppercase tracking-[0.24em] text-gold">Who we are</p>
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl">A desk that still walks the street.</h2>
+          </Reveal>
+          <Reveal dir="right">
+            <p className="leading-relaxed text-mist">PropertyHub began with notes on houses in Lekki and Ikoyi that still felt like homes after a decade. We now place a curated set of residences, lettings, and three developments.</p>
+          </Reveal>
         </div>
-      </section>
-      <section className="mx-auto max-w-site px-5 py-20 md:px-8">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-mute">Selected work</p>
-            <h2 className="mt-2 font-serif text-4xl">Featured properties</h2>
-          </div>
-          <Link href="/properties" className="hidden text-sm text-accent md:inline">View all</Link>
-        </div>
-        <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p) => (
-            <PropertyCard key={p.id} property={p} />
+        <div className="mt-16 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
+          {[["10+", "Years experience"], ["200+", "Properties placed"], ["5", "Prime locations"]].map(([n, l], i) => (
+            <Reveal key={l} dir={i === 1 ? "up" : i === 0 ? "left" : "right"}>
+              <p className="font-serif text-5xl text-gold">{n}</p>
+              <p className="mt-2 text-sm text-mist">{l}</p>
+            </Reveal>
           ))}
         </div>
       </section>
-      <section className="bg-sand/60 py-20">
-        <div className="mx-auto max-w-site px-5 md:px-8">
-          <h2 className="font-serif text-4xl">Popular locations</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {places.map((place) => (
-              <Link key={place.name} href={`/properties?location=${encodeURIComponent(place.name)}`} className="group relative aspect-[3/4] overflow-hidden">
-                <Image src={place.image} alt={place.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-ink/30" />
-                <span className="absolute bottom-4 left-4 font-serif text-2xl text-paper">{place.name}</span>
-              </Link>
+      <section className="mx-auto max-w-6xl px-5 pb-24 md:px-8">
+        <Reveal dir="up">
+          <div className="flex items-end justify-between">
+            <h2 className="font-serif text-4xl">Featured properties</h2>
+            <Link href="/properties" className="text-sm text-mist hover:text-ivory">Explore all</Link>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-10 sm:grid-cols-2">
+          {featured.map((p, i) => (
+            <Reveal key={p.slug} dir={i % 2 ? "right" : "left"}><PropertyCard p={p} /></Reveal>
+          ))}
+        </div>
+      </section>
+      <section className="border-y border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal dir="up"><h2 className="font-serif text-4xl">Our developments</h2></Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {developments.map((d, i) => (
+              <Reveal key={d.slug} dir={i === 0 ? "left" : i === 2 ? "right" : "up"}>
+                <Link href={`/developments/${d.slug}`} className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image src={d.image} alt={d.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-night to-transparent" />
+                    <div className="absolute bottom-0 p-5">
+                      <p className="text-xs uppercase tracking-wider text-gold">{d.location}</p>
+                      <h3 className="mt-2 font-serif text-2xl">{d.name}</h3>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
-      <section className="mx-auto max-w-site px-5 py-20 md:px-8">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-mute">Why PropertyHub</p>
-            <h2 className="mt-2 font-serif text-4xl">Fewer listings. Better notes.</h2>
-            <p className="mt-5 max-w-md text-mute leading-relaxed">
-              We do not publish every house that comes across the desk. Each listing is visited, photographed, and written so you can decide whether it is worth the drive.
-            </p>
-          </div>
-          <ol className="space-y-8">
-            <li><p className="font-serif text-2xl">01 — Discover</p><p className="mt-2 text-sm text-mute">Search by neighbourhood, type, and budget.</p></li>
-            <li><p className="font-serif text-2xl">02 — Explore</p><p className="mt-2 text-sm text-mute">Read the rooms, the street, and the numbers before you book a viewing.</p></li>
-            <li><p className="font-serif text-2xl">03 — Contact</p><p className="mt-2 text-sm text-mute">Write to the agent on the listing, or WhatsApp for a faster reply.</p></li>
-          </ol>
+      <section className="mx-auto max-w-6xl px-5 py-24 md:px-8">
+        <Reveal dir="left"><h2 className="font-serif text-4xl">Explore Lagos</h2></Reveal>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {locations.map((l, i) => (
+            <Reveal key={l.slug} dir={i % 2 ? "up" : "down"}>
+              <Link href={`/properties?location=${encodeURIComponent(l.name)}`} className="group block">
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <Image src={l.image} alt={l.name} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-night/35" />
+                  <p className="absolute bottom-4 left-4 font-serif text-2xl">{l.name}</p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </section>
-      <section className="border-t border-line px-5 py-20 md:px-8">
-        <div className="mx-auto max-w-site text-center">
-          <h2 className="font-serif text-4xl md:text-5xl">Looking for something specific?</h2>
-          <p className="mx-auto mt-4 max-w-md text-mute">Tell us the area and the budget. We will reply with what is actually available.</p>
-          <Link href="/contact" className="mt-8 inline-block bg-ink px-6 py-3 text-sm text-paper">Start a conversation</Link>
+      <section className="border-y border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal dir="up"><h2 className="font-serif text-4xl">Why PropertyHub</h2></Reveal>
+          <div className="mt-12 grid gap-10 md:grid-cols-4">
+            {[["Local expertise", "Deep knowledge of Lagos streets, papers, and what a plot actually floods."], ["Curated properties", "A selected portfolio. Not every listing on the market."], ["Professional service", "From the first note to the enquiry, one desk answers."], ["Trusted experience", "Clear rooms, clear title notes, no copied flyers."]].map(([t, d], i) => (
+              <Reveal key={t} dir={i < 2 ? "left" : "right"}>
+                <p className="text-gold">0{i + 1}</p>
+                <h3 className="mt-3 font-serif text-2xl">{t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-mist">{d}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
+      </section>
+      <section className="mx-auto max-w-6xl px-5 py-24 md:px-8">
+        <Reveal dir="right"><h2 className="font-serif text-4xl">Meet the team</h2></Reveal>
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((m, i) => (
+            <Reveal key={m.name} dir={i % 2 ? "up" : "down"}>
+              <div className="relative aspect-[3/4] overflow-hidden"><Image src={m.image} alt={m.name} fill className="object-cover" /></div>
+              <p className="mt-3 font-serif text-xl">{m.name}</p>
+              <p className="text-sm text-gold">{m.role}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Link href="/team" className="mt-8 inline-block text-sm text-mist">All specialists →</Link>
+      </section>
+      <section className="border-y border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal dir="up"><h2 className="font-serif text-4xl">What clients say</h2></Reveal>
+          <div className="mt-12 grid gap-10 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} dir={i === 0 ? "left" : i === 2 ? "right" : "up"}>
+                <p className="font-serif text-2xl leading-snug">“{t.quote}”</p>
+                <p className="mt-4 text-sm text-gold">{t.name} · {t.place}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="px-5 py-24 md:px-8">
+        <Reveal dir="up">
+          <div className="mx-auto max-w-6xl bg-ivory px-8 py-16 text-night md:px-16">
+            <h2 className="font-serif text-4xl md:text-5xl">Let us find the right space for you.</h2>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/properties" className="bg-night px-5 py-3 text-sm text-ivory">Explore properties</Link>
+              <Link href="/contact" className="border border-night px-5 py-3 text-sm">Talk to us</Link>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </>
   );
