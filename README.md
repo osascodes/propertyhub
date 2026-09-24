@@ -1,14 +1,10 @@
 # PropertyHub
 
-A Lagos real-estate demo. Premium UI, listings, filters, property pages, and an inquiry form.
-
-No database required.
+Lagos real-estate company website. Agency site with properties, developments, locations, team, and enquiries.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
-
-Repo: https://github.com/osascodes/propertyhub
+http://localhost:3000

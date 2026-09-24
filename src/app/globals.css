@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --background: #f6f2eb; --foreground: #161411; }
 html { scroll-behavior: smooth; }
-body { color: var(--foreground); background: var(--background); }
-::selection { background: #e8d5c0; }
-input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible {
-  outline: 2px solid #8a5a32;
-  outline-offset: 2px;
+body { background: #0c0b0a; color: #f3ece3; }
+::selection { background: #c4a574; color: #0c0b0a; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #c4a574; outline-offset: 3px;
 }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+.kenburns { animation: kenburns 18s ease-out forwards; }
+.reveal { opacity: 0; transition: opacity .9s ease, transform .9s ease; }
+.reveal.up { transform: translateY(40px); }
+.reveal.down { transform: translateY(-40px); }
+.reveal.left { transform: translateX(-48px); }
+.reveal.right { transform: translateX(48px); }
+.reveal.in { opacity: 1; transform: none; }
+select, input, textarea { color-scheme: dark; }
