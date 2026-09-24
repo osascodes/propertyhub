@@ -1,70 +1,63 @@
 import { PropertyCard } from "@/components/property-card";
-import { LOCATIONS } from "@/lib/seed-properties";
-import { filterProperties, getProperties, parseFilters } from "@/lib/properties";
-import type { Metadata } from "next";
+import { Reveal } from "@/components/reveal";
+import { LISTINGS, LOCATIONS, TYPES, filterProperties, properties } from "@/lib/data";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Properties",
-  description: "Browse homes and rentals across Lagos.",
-};
+export const metadata = { title: "Properties" };
 
-export default async function PropertiesPage({
+export default function PropertiesPage({
   searchParams,
 }: {
   searchParams: Record<string, string | string[] | undefined>;
 }) {
-  const filters = parseFilters(searchParams);
-  const all = await getProperties();
-  const results = filterProperties(all, filters);
-
+  const g = (k: string) => {
+    const v = searchParams[k];
+    return Array.isArray(v) ? v[0] : v;
+  };
+  const f = { q: g("q"), location: g("location"), type: g("type"), listing: g("listing"), beds: g("beds"), baths: g("baths"), min: g("min"), max: g("max") };
+  const more = Boolean(f.baths || f.min || f.max || f.listing);
+  const list = filterProperties(properties, f);
   return (
-    <div className="mx-auto max-w-site px-5 py-14 md:px-8">
-      <p className="text-xs uppercase tracking-[0.2em] text-mute">Listings</p>
-      <h1 className="mt-2 font-serif text-5xl">Properties</h1>
-      <p className="mt-3 max-w-xl text-mute">{results.length} homes currently shown.</p>
-      <form className="mt-10 grid gap-3 border border-line bg-paper p-4 md:grid-cols-6">
-        <input name="q" defaultValue={filters.q} placeholder="Search" className="border border-line bg-paper px-3 py-2.5 text-sm md:col-span-2" />
-        <select name="location" defaultValue={filters.location} className="border border-line bg-paper px-3 py-2.5 text-sm">
+    <div className="mx-auto max-w-6xl px-5 pb-24 pt-28 md:px-8">
+      <Reveal dir="up"><h1 className="font-serif text-5xl">Find your next property</h1></Reveal>
+      <form className="mt-10 grid gap-3 border border-line p-4 md:grid-cols-4">
+        <input name="q" defaultValue={f.q} placeholder="Search location, neighbourhood…" className="border border-line bg-transparent px-3 py-2 text-sm md:col-span-2" />
+        <select name="location" defaultValue={f.location || ""} className="border border-line bg-night px-3 py-2 text-sm">
           <option value="">Location</option>
-          {LOCATIONS.map((l) => (
-            <option key={l}>{l}</option>
-          ))}
+          {LOCATIONS.map((l) => <option key={l}>{l}</option>)}
         </select>
-        <select name="type" defaultValue={filters.type} className="border border-line bg-paper px-3 py-2.5 text-sm">
-          <option value="">Type</option>
-          <option>Apartment</option>
-          <option>House</option>
-          <option>Duplex</option>
-          <option>Land</option>
-          <option>Commercial</option>
+        <select name="type" defaultValue={f.type || ""} className="border border-line bg-night px-3 py-2 text-sm">
+          <option value="">Property type</option>
+          {TYPES.map((l) => <option key={l}>{l}</option>)}
         </select>
-        <select name="listing" defaultValue={filters.listing} className="border border-line bg-paper px-3 py-2.5 text-sm">
-          <option value="">Listing</option>
-          <option>For Sale</option>
-          <option>For Rent</option>
+        <select name="beds" defaultValue={f.beds || ""} className="border border-line bg-night px-3 py-2 text-sm">
+          <option value="">Bedrooms</option>
+          <option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option>
         </select>
-        <select name="sort" defaultValue={filters.sort} className="border border-line bg-paper px-3 py-2.5 text-sm">
-          <option value="newest">Newest</option>
-          <option value="price-asc">Price ↑</option>
-          <option value="price-desc">Price ↓</option>
-        </select>
-        <input name="min" type="number" defaultValue={filters.min || ""} placeholder="Min ₦" className="border border-line bg-paper px-3 py-2.5 text-sm" />
-        <input name="max" type="number" defaultValue={filters.max || ""} placeholder="Max ₦" className="border border-line bg-paper px-3 py-2.5 text-sm" />
-        <select name="beds" defaultValue={filters.beds || ""} className="border border-line bg-paper px-3 py-2.5 text-sm">
-          <option value="">Beds</option>
-          <option value="1">1+</option>
-          <option value="2">2+</option>
-          <option value="3">3+</option>
-          <option value="4">4+</option>
-        </select>
-        <button className="bg-ink text-sm text-paper">Apply</button>
+        <details className="md:col-span-4" open={more}>
+          <summary className="cursor-pointer text-sm text-gold">More filters</summary>
+          <div className="mt-3 grid gap-3 md:grid-cols-4">
+            <select name="listing" defaultValue={f.listing || ""} className="border border-line bg-night px-3 py-2 text-sm">
+              <option value="">Listing type</option>
+              {LISTINGS.map((l) => <option key={l}>{l}</option>)}
+            </select>
+            <select name="baths" defaultValue={f.baths || ""} className="border border-line bg-night px-3 py-2 text-sm">
+              <option value="">Bathrooms</option>
+              <option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option>
+            </select>
+            <input name="min" defaultValue={f.min} placeholder="Min sq ft" type="number" className="border border-line bg-transparent px-3 py-2 text-sm" />
+            <input name="max" defaultValue={f.max} placeholder="Max sq ft" type="number" className="border border-line bg-transparent px-3 py-2 text-sm" />
+          </div>
+        </details>
+        <button className="bg-ivory py-2 text-sm text-night">Search</button>
+        <Link href="/properties" className="border border-line py-2 text-center text-sm">Reset filters</Link>
       </form>
-      {results.length === 0 ? (
-        <p className="mt-16 text-center text-mute">Nothing matches those filters.</p>
+      {list.length === 0 ? (
+        <p className="mt-16 text-center text-mist">No properties match those filters.</p>
       ) : (
-        <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {results.map((p) => (
-            <PropertyCard key={p.id} property={p} />
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((p, i) => (
+            <Reveal key={p.slug} dir={i % 2 ? "right" : "left"}><PropertyCard p={p} /></Reveal>
           ))}
         </div>
       )}
