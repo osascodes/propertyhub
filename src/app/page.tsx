@@ -20,11 +20,11 @@ export default function HomePage() {
             <p className="leading-relaxed text-mist">PropertyHub began with notes on houses in Lekki and Ikoyi that still felt like homes after a decade. We now place a curated set of residences, lettings, and three developments.</p>
           </Reveal>
         </div>
-        <div className="mt-16 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
+        <div className="mt-16 grid gap-8 border-t border-line pt-10 text-center md:grid-cols-3">
           {[["10+", "Years experience"], ["200+", "Properties placed"], ["5", "Prime locations"]].map(([n, l]) => (
-            <Reveal key={l} dir="up" className="text-center">
-              <p className="font-serif text-5xl text-gold">{n}</p>
-              <p className="mt-2 text-sm text-mist">{l}</p>
+            <Reveal key={l} dir="up">
+              <p className="text-center font-serif text-5xl text-gold">{n}</p>
+              <p className="mt-2 text-center text-sm text-mist">{l}</p>
             </Reveal>
           ))}
         </div>

@@ -13,11 +13,11 @@ export default function AboutPage() {
       <Reveal dir="right" className="mt-4">
         <p className="leading-relaxed text-mist">Today we place residences, lettings, and three developments. We do not run a feed of every listing in the city.</p>
       </Reveal>
-      <div className="mt-16 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
+      <div className="mt-16 grid gap-8 border-t border-line pt-10 text-center md:grid-cols-3">
         {[["10+", "Years experience"],["200+", "Properties"],["5", "Prime locations"]].map(([n,l]) => (
-          <Reveal key={l} dir="up" className="text-center">
-            <p className="font-serif text-4xl text-gold">{n}</p>
-            <p className="mt-2 text-sm text-mist">{l}</p>
+          <Reveal key={l} dir="up">
+            <p className="text-center font-serif text-4xl text-gold">{n}</p>
+            <p className="mt-2 text-center text-sm text-mist">{l}</p>
           </Reveal>
         ))}
       </div>
