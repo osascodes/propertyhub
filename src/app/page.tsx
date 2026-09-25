@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { Reveal } from "@/components/reveal";
+import { CountUp } from "@/components/count-up";
 import { PropertyCard } from "@/components/property-card";
 import { developments, locations, properties, team, testimonials } from "@/lib/data";
 
@@ -21,10 +22,16 @@ export default function HomePage() {
           </Reveal>
         </div>
         <div className="mt-16 grid gap-8 border-t border-line pt-10 text-center md:grid-cols-3">
-          {[["10+", "Years experience"], ["200+", "Properties placed"], ["5", "Prime locations"]].map(([n, l]) => (
-            <Reveal key={l} dir="up">
-              <p className="text-center font-serif text-5xl text-gold">{n}</p>
-              <p className="mt-2 text-center text-sm text-mist">{l}</p>
+          {[
+            { to: 10, suffix: "+", label: "Years experience" },
+            { to: 200, suffix: "+", label: "Properties placed" },
+            { to: 5, suffix: "", label: "Prime locations" },
+          ].map((s) => (
+            <Reveal key={s.label} dir="up">
+              <p className="text-center font-serif text-5xl text-gold">
+                <CountUp to={s.to} suffix={s.suffix} />
+              </p>
+              <p className="mt-2 text-center text-sm text-mist">{s.label}</p>
             </Reveal>
           ))}
         </div>
