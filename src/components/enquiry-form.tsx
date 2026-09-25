@@ -1,7 +1,8 @@
 "use client";
 import { FormEvent, useState } from "react";
 
-const field = "mt-1 w-full border border-line bg-transparent px-3 py-3 text-base";
+const field =
+  "mt-1 w-full border border-line bg-transparent px-3 py-3 text-base leading-normal";
 
 export function EnquiryForm({ property }: { property?: string }) {
   const [sent, setSent] = useState(false);
@@ -13,13 +14,25 @@ export function EnquiryForm({ property }: { property?: string }) {
     return <p className="border border-line p-6 text-sm text-mist">Thank you. A specialist will write back within a working day.</p>;
   }
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-4" autoComplete="on">
       {property && <input type="hidden" name="property" value={property} />}
-      <label className="block text-sm">Name<input required name="name" className={field} /></label>
-      <label className="block text-sm">Phone<input required name="phone" inputMode="tel" className={field} /></label>
-      <label className="block text-sm">Email<input required type="email" name="email" className={field} /></label>
-      <label className="block text-sm">Message<textarea required name="message" rows={4} className={field} /></label>
-      <button className="bg-ivory px-5 py-3 text-sm text-night">Send enquiry</button>
+      <label className="block text-sm">
+        Name
+        <input required name="name" autoComplete="name" className={field} />
+      </label>
+      <label className="block text-sm">
+        Phone
+        <input required name="phone" type="tel" autoComplete="tel" className={field} />
+      </label>
+      <label className="block text-sm">
+        Email
+        <input required type="email" name="email" autoComplete="email" className={field} />
+      </label>
+      <label className="block text-sm">
+        Message
+        <textarea required name="message" rows={4} className={field} />
+      </label>
+      <button type="submit" className="bg-ivory px-5 py-3 text-sm text-night">Send enquiry</button>
     </form>
   );
 }

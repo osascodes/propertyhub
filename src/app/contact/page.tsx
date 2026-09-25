@@ -7,13 +7,13 @@ export default function ContactPage() {
       <Reveal dir="left">
         <h1 className="font-serif text-5xl">Talk to us</h1>
         <p className="mt-6 leading-relaxed text-mist">Viewings, developments, or a short brief. We reply within one working day.</p>
-        <div className="mt-8 space-y-1 text-sm no-underline">
+        <div className="no-detect mt-8 space-y-1 text-sm text-ivory">
           <p>12 Adeola Odeku Street</p>
           <p>Victoria Island, Lagos</p>
           <p>+234 809 441 2200</p>
           <p>hello@propertyhub.ng</p>
         </div>
-        <a href="https://wa.me/2348094412200" className="mt-6 inline-block text-gold no-underline">WhatsApp the desk →</a>
+        <a href="https://wa.me/2348094412200" className="mt-6 inline-block text-gold">WhatsApp the desk →</a>
       </Reveal>
       <Reveal dir="right"><EnquiryForm /></Reveal>
     </div>
