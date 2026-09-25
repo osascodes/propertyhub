@@ -9,6 +9,8 @@ const slides = [
   { image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80", kicker: "Lekki" },
 ];
 
+const field = "mt-1 w-full rounded-md border border-line bg-night px-3 py-3 text-base text-ivory";
+
 export function Hero() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -27,26 +29,28 @@ export function Hero() {
         <p className="text-xs uppercase tracking-[0.28em] text-gold">{slides[i].kicker}</p>
         <h1 className="mt-4 max-w-3xl font-serif text-5xl leading-[1.05] md:text-7xl">Find a place that feels like home.</h1>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80">PropertyHub is a Lagos practice. We place houses, apartments, and a small number of developments across Lekki, Ikoyi, Victoria Island, and GRA.</p>
-        <form action="/properties" className="mt-10 grid gap-3 border border-line bg-night/70 p-4 backdrop-blur md:grid-cols-4">
+        <form action="/properties" className="mt-10 grid gap-4 rounded-lg border border-line bg-night/75 p-4 backdrop-blur md:grid-cols-4 md:items-end">
           <label className="text-xs uppercase tracking-wider text-mist">Location
-            <select name="location" className="mt-1 w-full border border-line bg-night px-3 py-2.5 text-sm text-ivory">
+            <select name="location" className={field}>
               <option value="">All areas</option>
               {LOCATIONS.map((l) => <option key={l}>{l}</option>)}
             </select>
           </label>
           <label className="text-xs uppercase tracking-wider text-mist">Property type
-            <select name="type" className="mt-1 w-full border border-line bg-night px-3 py-2.5 text-sm text-ivory">
+            <select name="type" className={field}>
               <option value="">Any</option>
               {TYPES.map((l) => <option key={l}>{l}</option>)}
             </select>
           </label>
           <label className="text-xs uppercase tracking-wider text-mist">Bedrooms
-            <select name="beds" className="mt-1 w-full border border-line bg-night px-3 py-2.5 text-sm text-ivory">
+            <select name="beds" className={field}>
               <option value="">Any</option>
               <option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option>
             </select>
           </label>
-          <button className="bg-ivory text-sm text-night md:self-end md:py-2.5">Search</button>
+          <button type="submit" className="w-full rounded-md bg-ivory py-3.5 text-base font-medium text-night">
+            Search
+          </button>
         </form>
         <div className="mt-6 flex gap-2">
           {slides.map((_, idx) => (
