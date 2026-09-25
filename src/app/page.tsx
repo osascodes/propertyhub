@@ -21,8 +21,8 @@ export default function HomePage() {
           </Reveal>
         </div>
         <div className="mt-16 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
-          {[["10+", "Years experience"], ["200+", "Properties placed"], ["5", "Prime locations"]].map(([n, l], i) => (
-            <Reveal key={l} dir={i === 1 ? "up" : i === 0 ? "left" : "right"}>
+          {[["10+", "Years experience"], ["200+", "Properties placed"], ["5", "Prime locations"]].map(([n, l]) => (
+            <Reveal key={l} dir="up" className="text-center">
               <p className="font-serif text-5xl text-gold">{n}</p>
               <p className="mt-2 text-sm text-mist">{l}</p>
             </Reveal>
