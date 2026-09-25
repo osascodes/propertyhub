@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/reveal";
+import { CountUp } from "@/components/count-up";
 export const metadata = { title: "About" };
 export default function AboutPage() {
   return (
@@ -14,10 +15,16 @@ export default function AboutPage() {
         <p className="leading-relaxed text-mist">Today we place residences, lettings, and three developments. We do not run a feed of every listing in the city.</p>
       </Reveal>
       <div className="mt-16 grid gap-8 border-t border-line pt-10 text-center md:grid-cols-3">
-        {[["10+", "Years experience"],["200+", "Properties"],["5", "Prime locations"]].map(([n,l]) => (
-          <Reveal key={l} dir="up">
-            <p className="text-center font-serif text-4xl text-gold">{n}</p>
-            <p className="mt-2 text-center text-sm text-mist">{l}</p>
+        {[
+          { to: 10, suffix: "+", label: "Years experience" },
+          { to: 200, suffix: "+", label: "Properties" },
+          { to: 5, suffix: "", label: "Prime locations" },
+        ].map((s) => (
+          <Reveal key={s.label} dir="up">
+            <p className="text-center font-serif text-4xl text-gold">
+              <CountUp to={s.to} suffix={s.suffix} />
+            </p>
+            <p className="mt-2 text-center text-sm text-mist">{s.label}</p>
           </Reveal>
         ))}
       </div>
