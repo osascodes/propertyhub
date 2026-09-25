@@ -5,6 +5,7 @@
 html { scroll-behavior: smooth; }
 body { background: #0c0b0a; color: #f3ece3; }
 ::selection { background: #c4a574; color: #0c0b0a; }
+a { text-decoration: none; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid #c4a574; outline-offset: 3px;
 }
@@ -16,4 +17,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .reveal.left { transform: translateX(-48px); }
 .reveal.right { transform: translateX(48px); }
 .reveal.in { opacity: 1; transform: none; }
-select, input, textarea { color-scheme: dark; }
+select, input, textarea {
+  color-scheme: dark;
+  font-size: 16px;
+}

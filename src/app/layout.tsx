@@ -10,6 +10,7 @@ const sans = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   title: { default: "PropertyHub — Lagos residences", template: "%s · PropertyHub" },
   description: "A Lagos real-estate practice for homes, lettings, and developments in Lekki, Ikoyi, Victoria Island, and Ikeja.",
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
