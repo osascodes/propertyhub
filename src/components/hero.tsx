@@ -48,7 +48,7 @@ export function Hero() {
               <option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option>
             </select>
           </label>
-          <button type="submit" className="w-full rounded-md bg-ivory py-3.5 text-base font-medium text-night">
+          <button type="submit" className="w-full rounded-md bg-ivory py-2 text-sm text-night">
             Search
           </button>
         </form>
