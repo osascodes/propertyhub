@@ -9,6 +9,7 @@ export type Property = {
 };
 
 const img = (id: string, w = 1800) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+const shot = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=800`;
 
 export const properties: Property[] = [
   { slug: "modern-residence-lekki", title: "Modern 3-Bedroom Residence", location: "Lekki", area: "Lekki Phase 1, Lagos", type: "House", listing: "For Sale", beds: 3, baths: 3, sqft: 2450, featured: true, development: "azure-gardens", image: img("1613490493576-7fde63acd811"), gallery: [img("1613490493576-7fde63acd811"), img("1600607687939-ce8a6c25118c", 1600), img("1600585154340-be6161a56a0c", 1600)], overview: "Set back from Admiralty Drive, this three-bedroom house opens onto a long garden and a terrace that stays cool in the late afternoon.", features: ["Swimming pool", "Fitted kitchen", "Parking for 3", "24-hour security", "Generator", "Staff quarters"] },
@@ -36,16 +37,16 @@ export const locations = [
 ];
 
 export const team = [
-  { name: "Amaka Obi", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: img("1531123897727-8f129e1688ce", 800) },
-  { name: "Tunde Balogun", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: img("1522529592750-1da8f3070fca", 800) },
-  { name: "Chidi Eze", role: "Developments", note: "New buildings and land on the eastern corridor.", image: img("1463453091185-61582044d556", 800) },
-  { name: "Zainab Bello", role: "Client desk", note: "Viewings, papers, and the first reply.", image: img("1589156280159-27698a70f29e", 800) },
+  { name: "Amaka Cole", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: shot(1181686) },
+  { name: "David Wright", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: shot(2182970) },
+  { name: "James Hart", role: "Developments", note: "New buildings and land on the eastern corridor.", image: shot(2379004) },
+  { name: "Sofia Ellis", role: "Client desk", note: "Viewings, papers, and the first reply.", image: shot(1181690) },
 ];
 
 export const testimonials = [
-  { quote: "PropertyHub made finding our home in Ikoyi simple from the first note to the keys.", name: "Adaeze N.", place: "Ikoyi" },
-  { quote: "They sent three houses. We viewed two. We took the second. No theatre.", name: "Kunle A.", place: "Lekki" },
-  { quote: "Clear papers, a working generator, and an agent who answered on the same day.", name: "Mariam S.", place: "Victoria Island" },
+  { quote: "PropertyHub made finding our home in Ikoyi simple from the first note to the keys.", name: "Ada Cole", place: "Ikoyi" },
+  { quote: "They sent three houses. We viewed two. We took the second. No theatre.", name: "James Ade", place: "Lekki" },
+  { quote: "Clear papers, a working generator, and an agent who answered on the same day.", name: "Mariam Ellis", place: "Victoria Island" },
 ];
 
 export function filterProperties(list: Property[], f: Record<string, string | undefined>) {
