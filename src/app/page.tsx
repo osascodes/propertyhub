@@ -7,8 +7,8 @@ import { PropertyCard } from "@/components/property-card";
 import { developments, locations, properties, team, testimonials } from "@/lib/data";
 
 const services = [
-  { n: "01", title: "Buy", text: "Houses and apartments for sale in Lekki, Ikoyi, Victoria Island, and GRA.", href: "/properties?listing=Sale" },
-  { n: "02", title: "Let", text: "A short list of lettings. We place tenants without flooding the market.", href: "/properties?listing=Let" },
+  { n: "01", title: "Buy", text: "Houses and apartments for sale in Lekki, Ikoyi, Victoria Island, and GRA.", href: "/properties?listing=For%20Sale" },
+  { n: "02", title: "Let", text: "A short list of lettings. We place tenants without flooding the market.", href: "/properties?listing=For%20Rent" },
   { n: "03", title: "Developments", text: "Units in a small number of schemes we represent — not a contractor’s yard.", href: "/developments" },
   { n: "04", title: "Consultancy", text: "Viewings, title notes, and a straight brief before anyone pays a retainer.", href: "/contact" },
 ];
