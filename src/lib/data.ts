@@ -38,15 +38,15 @@ export const locations = [
 
 export const team = [
   { name: "Amaka Cole", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: shot(1181686) },
-  { name: "David Wright", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: shot(1516680) },
-  { name: "James Hart", role: "Developments", note: "New buildings and land on the eastern corridor.", image: shot(3778603) },
-  { name: "Sofia Ellis", role: "Client desk", note: "Viewings, papers, and the first reply.", image: shot(3760514) },
+  { name: "David Williams", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: shot(2379005) },
+  { name: "James Thomas", role: "Developments", note: "New buildings and land on the eastern corridor.", image: shot(3760514) },
+  { name: "Sarah Bennett", role: "Client desk", note: "Viewings, papers, and the first reply.", image: shot(3785079) },
 ];
 
 export const testimonials = [
   { quote: "PropertyHub made finding our home in Ikoyi simple from the first note to the keys.", name: "Ada Cole", place: "Ikoyi" },
-  { quote: "They sent three houses. We viewed two. We took the second. No theatre.", name: "James Ade", place: "Lekki" },
-  { quote: "Clear papers, a working generator, and an agent who answered on the same day.", name: "Mariam Ellis", place: "Victoria Island" },
+  { quote: "They sent three houses. We viewed two. We took the second. No theatre.", name: "David Ade", place: "Lekki" },
+  { quote: "Clear papers, a working generator, and an agent who answered on the same day.", name: "Sarah Miles", place: "Victoria Island" },
 ];
 
 export function filterProperties(list: Property[], f: Record<string, string | undefined>) {
