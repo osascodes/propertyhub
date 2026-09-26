@@ -38,9 +38,9 @@ export const locations = [
 
 export const team = [
   { name: "Amaka Cole", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: shot(1181686) },
-  { name: "David Williams", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: shot(2379005) },
-  { name: "James Thomas", role: "Developments", note: "New buildings and land on the eastern corridor.", image: shot(3760514) },
-  { name: "Sarah Bennett", role: "Client desk", note: "Viewings, papers, and the first reply.", image: shot(3785079) },
+  { name: "David Williams", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: shot(5082976) },
+  { name: "James Thomas", role: "Developments", note: "New buildings and land on the eastern corridor.", image: shot(1222271) },
+  { name: "Sarah Bennett", role: "Client desk", note: "Viewings, papers, and the first reply.", image: shot(2381069) },
 ];
 
 export const testimonials = [
