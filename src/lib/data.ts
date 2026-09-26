@@ -36,10 +36,10 @@ export const locations = [
 ];
 
 export const team = [
-  { name: "Amaka Obi", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: img("1573496359142-b8d87734a5a2", 800) },
-  { name: "Tunde Balogun", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: img("1472099645785-5658abf4ff4e", 800) },
-  { name: "Chidi Eze", role: "Developments", note: "New buildings and land on the eastern corridor.", image: img("1507003211169-0a1dd7228f2d", 800) },
-  { name: "Zainab Bello", role: "Client desk", note: "Viewings, papers, and the first reply.", image: img("1580489944761-15a19d654956", 800) },
+  { name: "Amaka Obi", role: "Principal", note: "Leads acquisitions in Lekki and Ikoyi.", image: img("1531123897727-8f129e1688ce", 800) },
+  { name: "Tunde Balogun", role: "Head of Lettings", note: "Island apartments and GRA houses.", image: img("1522529592750-1da8f3070fca", 800) },
+  { name: "Chidi Eze", role: "Developments", note: "New buildings and land on the eastern corridor.", image: img("1463453091185-61582044d556", 800) },
+  { name: "Zainab Bello", role: "Client desk", note: "Viewings, papers, and the first reply.", image: img("1589156280159-27698a70f29e", 800) },
 ];
 
 export const testimonials = [
