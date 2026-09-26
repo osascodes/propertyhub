@@ -23,7 +23,6 @@ a, a:hover, a:visited {
 }
 a.text-gold { color: #c4a574; }
 
-/* iOS auto-links on addresses / phones / emails */
 a[x-apple-data-detectors],
 span[x-apple-data-detectors],
 .no-detect,
@@ -35,6 +34,13 @@ span[x-apple-data-detectors],
 
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid #c4a574; outline-offset: 3px;
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 6px;
 }
 
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }

@@ -26,7 +26,7 @@ export function Header() {
           {links.map((l) => (
             <Link key={l.href} href={l.href} className={`text-sm ${active(l.href) ? "text-ivory" : "text-mist hover:text-ivory"}`}>{l.label}</Link>
           ))}
-          <a href="https://wa.me/2348094412200" className="border border-gold px-3 py-2 text-xs uppercase tracking-wider text-gold hover:bg-gold hover:text-night">WhatsApp</a>
+          <a href="https://wa.me/2348094412200" className="rounded-md border border-gold px-3 py-2 text-xs uppercase tracking-wider text-gold hover:bg-gold hover:text-night">WhatsApp</a>
         </nav>
         <button className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
       </div>

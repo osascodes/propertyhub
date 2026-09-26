@@ -2,7 +2,7 @@
 import { FormEvent, useState } from "react";
 
 const field =
-  "mt-1 w-full border border-line bg-transparent px-3 py-3 text-base leading-normal";
+  "mt-1 w-full rounded-md border border-line bg-transparent px-3 py-3 text-base leading-normal";
 
 export function EnquiryForm({ property }: { property?: string }) {
   const [sent, setSent] = useState(false);
@@ -11,7 +11,7 @@ export function EnquiryForm({ property }: { property?: string }) {
     setSent(true);
   }
   if (sent) {
-    return <p className="border border-line p-6 text-sm text-mist">Thank you. A specialist will write back within a working day.</p>;
+    return <p className="rounded-md border border-line p-6 text-sm text-mist">Thank you. A specialist will write back within a working day.</p>;
   }
   return (
     <form onSubmit={onSubmit} className="space-y-4" autoComplete="on">
@@ -32,7 +32,7 @@ export function EnquiryForm({ property }: { property?: string }) {
         Message
         <textarea required name="message" rows={4} className={field} />
       </label>
-      <button type="submit" className="bg-ivory px-5 py-3 text-sm text-night">Send enquiry</button>
+      <button type="submit" className="rounded-md bg-ivory px-5 py-3 text-sm text-night">Send enquiry</button>
     </form>
   );
 }

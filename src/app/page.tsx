@@ -6,6 +6,13 @@ import { CountUp } from "@/components/count-up";
 import { PropertyCard } from "@/components/property-card";
 import { developments, locations, properties, team, testimonials } from "@/lib/data";
 
+const services = [
+  { n: "01", title: "Buy", text: "Houses and apartments for sale in Lekki, Ikoyi, Victoria Island, and GRA.", href: "/properties?listing=Sale" },
+  { n: "02", title: "Let", text: "A short list of lettings. We place tenants without flooding the market.", href: "/properties?listing=Let" },
+  { n: "03", title: "Developments", text: "Units in a small number of schemes we represent — not a contractor’s yard.", href: "/developments" },
+  { n: "04", title: "Consultancy", text: "Viewings, title notes, and a straight brief before anyone pays a retainer.", href: "/contact" },
+];
+
 export default function HomePage() {
   const featured = properties.filter((p) => p.featured).slice(0, 4);
   return (
@@ -36,7 +43,26 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-      <section className="mx-auto max-w-6xl px-5 pb-24 md:px-8">
+      <section className="border-y border-line py-24">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal dir="up">
+            <p className="text-xs uppercase tracking-[0.24em] text-gold">What we do</p>
+            <h2 className="mt-4 font-serif text-4xl">Our services</h2>
+          </Reveal>
+          <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((s, i) => (
+              <Reveal key={s.title} dir={i < 2 ? "left" : "right"}>
+                <Link href={s.href} className="block">
+                  <p className="text-gold">{s.n}</p>
+                  <h3 className="mt-3 font-serif text-2xl">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-mist">{s.text}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto max-w-6xl px-5 py-24 md:px-8">
         <Reveal dir="up">
           <div className="flex items-end justify-between">
             <h2 className="font-serif text-4xl">Featured properties</h2>
@@ -131,8 +157,8 @@ export default function HomePage() {
           <div className="mx-auto max-w-6xl bg-ivory px-8 py-16 text-night md:px-16">
             <h2 className="font-serif text-4xl md:text-5xl">Let us find the right space for you.</h2>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/properties" className="bg-night px-5 py-3 text-sm text-ivory">Explore properties</Link>
-              <Link href="/contact" className="border border-night px-5 py-3 text-sm">Talk to us</Link>
+              <Link href="/properties" className="rounded-md bg-night px-5 py-3 text-sm text-ivory">Explore properties</Link>
+              <Link href="/contact" className="rounded-md border border-night px-5 py-3 text-sm">Talk to us</Link>
             </div>
           </div>
         </Reveal>
