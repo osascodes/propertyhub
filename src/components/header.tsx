@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-night/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
-        <Link href="/" className="font-serif text-xl">PropertyHub</Link>
+        <Link href="/" className="font-serif text-xl">Cole & Co.</Link>
         <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className={`text-sm ${active(l.href) ? "text-ivory" : "text-mist hover:text-ivory"}`}>{l.label}</Link>

@@ -9,7 +9,7 @@ export default function AboutPage() {
         <h1 className="mt-4 font-serif text-5xl">Who we are</h1>
       </Reveal>
       <Reveal dir="left" className="mt-8">
-        <p className="leading-relaxed text-mist">PropertyHub is a Lagos practice. We started by walking streets in Lekki and Ikoyi and writing down which houses still felt like homes after ten years. That notebook became the desk.</p>
+        <p className="leading-relaxed text-mist">Cole & Co. is a Lagos practice. We started by walking streets in Lekki and Ikoyi and writing down which houses still felt like homes after ten years. That notebook became the desk.</p>
       </Reveal>
       <Reveal dir="right" className="mt-4">
         <p className="leading-relaxed text-mist">Today we place residences, lettings, and three developments. We do not run a feed of every listing in the city.</p>

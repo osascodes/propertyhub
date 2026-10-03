@@ -8,7 +8,7 @@ const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "6
 const sans = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: { default: "PropertyHub — Lagos residences", template: "%s · PropertyHub" },
+  title: { default: "Cole & Co. — Lagos residences", template: "%s · Cole & Co." },
   description: "A Lagos real-estate practice for homes, lettings, and developments in Lekki, Ikoyi, Victoria Island, and Ikeja.",
   formatDetection: { telephone: false, email: false, address: false },
 };

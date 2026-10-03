@@ -11,7 +11,7 @@ export default function ContactPage() {
           <p>12 Adeola Odeku Street</p>
           <p>Victoria Island, Lagos</p>
           <p>+234 809 441 2200</p>
-          <p>hello@propertyhub.ng</p>
+          <p>hello@coleandco.ng</p>
         </div>
         <a href="https://wa.me/2348094412200" className="mt-6 inline-block text-gold">WhatsApp the desk →</a>
       </Reveal>
