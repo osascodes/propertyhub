@@ -17,6 +17,7 @@ const menus = [
     label: "About",
     href: "/about",
     items: [
+      { href: "/about", label: "The practice" },
       { href: "/team", label: "Team" },
       { href: "/locations", label: "Locations" },
     ],
@@ -46,7 +47,7 @@ export function Header() {
               <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
                 <div className="rounded-md border border-line bg-night/95 py-2 shadow-xl">
                   {m.items.map((item) => (
-                    <Link key={item.href} href={item.href} className={`block px-4 py-2.5 text-sm ${on(item.href) ? "text-gold" : "text-ivory/80 hover:text-ivory"}`}>
+                    <Link key={item.href} href={item.href} className={`block px-4 py-2.5 text-sm ${pathname === item.href ? "text-gold" : "text-ivory/80 hover:text-ivory"}`}>
                       {item.label}
                     </Link>
                   ))}
