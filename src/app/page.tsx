@@ -25,7 +25,7 @@ export default function HomePage() {
             <h2 className="mt-4 font-serif text-4xl md:text-5xl">A desk that still walks the street.</h2>
           </Reveal>
           <Reveal dir="right">
-            <p className="leading-relaxed text-mist">Cole & Co. began with notes on houses in Lekki and Ikoyi that still felt like homes after a decade. We now place a curated set of residences, lettings, and three developments.</p>
+            <p className="leading-relaxed text-mist">Meridian began with notes on houses in Lekki and Ikoyi that still felt like homes after a decade. We now place a curated set of residences, lettings, and three developments.</p>
           </Reveal>
         </div>
         <div className="mt-16 grid gap-8 border-t border-line pt-10 text-center md:grid-cols-3">
@@ -114,7 +114,7 @@ export default function HomePage() {
       </section>
       <section className="border-y border-line py-24">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <Reveal dir="up"><h2 className="font-serif text-4xl">Why Cole & Co.</h2></Reveal>
+          <Reveal dir="up"><h2 className="font-serif text-4xl">Why Meridian</h2></Reveal>
           <div className="mt-12 grid gap-10 md:grid-cols-4">
             {[["Local expertise", "Deep knowledge of Lagos streets, papers, and what a plot actually floods."], ["Curated properties", "A selected portfolio. Not every listing on the market."], ["Professional service", "From the first note to the enquiry, one desk answers."], ["Trusted experience", "Clear rooms, clear title notes, no copied flyers."]].map(([t, d], i) => (
               <Reveal key={t} dir={i < 2 ? "left" : "right"}>
