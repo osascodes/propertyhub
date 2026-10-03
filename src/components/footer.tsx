@@ -4,7 +4,7 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
-          <p className="font-serif text-2xl">Cole & Co.</p>
+          <p className="font-serif text-2xl">Meridian</p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-mist">A Lagos practice for homes, lettings, and a small number of developments.</p>
         </div>
         <div className="flex flex-col gap-2 text-sm">
