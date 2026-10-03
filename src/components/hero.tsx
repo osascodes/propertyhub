@@ -28,7 +28,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28 md:px-8">
         <p className="text-xs uppercase tracking-[0.28em] text-gold">{slides[i].kicker}</p>
         <h1 className="mt-4 max-w-3xl font-serif text-5xl leading-[1.05] md:text-7xl">Find a place that feels like home.</h1>
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80">Cole & Co. is a Lagos practice. We place houses, apartments, and a small number of developments across Lekki, Ikoyi, Victoria Island, and GRA.</p>
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-ivory/80">Meridian is a Lagos practice. We place houses, apartments, and a small number of developments across Lekki, Ikoyi, Victoria Island, and GRA.</p>
         <form action="/properties" className="mt-10 grid gap-4 rounded-lg border border-line bg-night/75 p-4 backdrop-blur md:grid-cols-4 md:items-end">
           <label className="text-xs uppercase tracking-wider text-mist">Location
             <select name="location" className={field}>
