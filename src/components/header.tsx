@@ -17,7 +17,6 @@ const menus = [
     label: "About",
     href: "/about",
     items: [
-      { href: "/about", label: "The practice" },
       { href: "/team", label: "Team" },
       { href: "/locations", label: "Locations" },
     ],
@@ -37,6 +36,7 @@ export function Header() {
         <Link href="/" className="font-serif text-xl tracking-wide" onClick={close}>Meridian</Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
+          <Link href="/" className={`text-sm ${pathname === "/" ? "text-ivory" : "text-mist hover:text-ivory"}`}>Home</Link>
           {menus.map((m) => (
             <div key={m.label} className="group relative">
               <Link href={m.href} className={`inline-flex items-center gap-1 text-sm ${on(m.href) || m.items.some((i) => on(i.href)) ? "text-ivory" : "text-mist hover:text-ivory"}`}>
@@ -63,12 +63,15 @@ export function Header() {
 
       {open && (
         <div className="border-t border-line px-5 py-4 lg:hidden">
+          <Link href="/" onClick={close} className="block border-b border-line/70 py-3 text-lg">Home</Link>
           {menus.map((m) => (
             <div key={m.label} className="border-b border-line/70">
-              <button className="flex w-full items-center justify-between py-3 text-left text-lg" onClick={() => setPanel(panel === m.label ? null : m.label)}>
-                {m.label}
-                <ChevronDown className={`h-4 w-4 transition ${panel === m.label ? "rotate-180 text-gold" : "text-mist"}`} />
-              </button>
+              <div className="flex items-center justify-between">
+                <Link href={m.href} onClick={close} className="py-3 text-lg">{m.label}</Link>
+                <button aria-label={`${m.label} menu`} className="p-2" onClick={() => setPanel(panel === m.label ? null : m.label)}>
+                  <ChevronDown className={`h-4 w-4 transition ${panel === m.label ? "rotate-180 text-gold" : "text-mist"}`} />
+                </button>
+              </div>
               {panel === m.label && (
                 <div className="mb-3 space-y-1 pl-3">
                   {m.items.map((item) => (
